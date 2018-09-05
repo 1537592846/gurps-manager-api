@@ -41,7 +41,7 @@ namespace gurps_manager_api
 
         public void AddTransients(IServiceCollection services)
         {
-            services.AddTransient<AdvantageDataAccess>();
+            services.AddTransient<EquipmentDataAccess>();
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class AdvantageDataAccess : DataAccess
     {
-        public AdvantageDataAccess() : base("Advantages", "AdvantageId")
+        public AdvantageDataAccess() : base("Advantages")
         {
         }
     }

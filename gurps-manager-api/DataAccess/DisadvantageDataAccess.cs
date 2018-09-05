@@ -2,7 +2,7 @@
 {
     public class DisadvantageDataAccess : DataAccess
     {
-        public DisadvantageDataAccess() : base("Disadvantages", "DisadvantageId")
+        public DisadvantageDataAccess() : base("Disadvantages")
         {
         }
     }

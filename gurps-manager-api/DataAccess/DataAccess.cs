@@ -12,9 +12,9 @@ namespace gurps_manager_library.DataAccess
         MongoServer _server;
         MongoDatabase _db;
         string collectionName;
-        string idCampName;
+        string idCampName="Id";
 
-        public DataAccess(string collection,string idName)
+        public DataAccess(string collection)
         {
             _client = new MongoClient("mongodb://localhost:27017");
 #pragma warning disable CS0618 // O tipo ou membro é obsoleto
@@ -22,7 +22,6 @@ namespace gurps_manager_library.DataAccess
 #pragma warning restore CS0618 // O tipo ou membro é obsoleto
             _db = _server.GetDatabase("GURPS");
             collectionName = collection;
-            idCampName = idName;
         }
 
         public void InsertOne<T>(T obj)
