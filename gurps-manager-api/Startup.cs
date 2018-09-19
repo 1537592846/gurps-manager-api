@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using gurps_manager_library.DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -41,7 +42,15 @@ namespace gurps_manager_api
 
         public void AddTransients(IServiceCollection services)
         {
-            services.AddTransient<EquipmentDataAccess>();
+            var classList = Assembly.GetExecutingAssembly().GetTypes()
+                 .Where(t => t.Namespace == "gurps_manager_library.DataAccess")
+                 .ToList();
+
+            foreach (var className in classList.Where(x => x.Name != "DataAccess"))
+            {
+                var type = Type.GetType("gurps_manager_library.DataAccess." + className.Name);
+                services.AddTransient(type);
+            }
         }
     }
 }
