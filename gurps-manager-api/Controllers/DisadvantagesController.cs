@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace gurps_manager_api.Controllers
 {
     [Route("api/[controller]")]
-    public class DisadvantageController : Controller
+    public class DisadvantagesController : Controller
     {
         [HttpGet("get")]
         public string Get()
