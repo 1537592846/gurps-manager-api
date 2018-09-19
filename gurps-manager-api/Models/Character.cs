@@ -1,5 +1,4 @@
-﻿using gurps_manager_library.DataAccess;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 
@@ -37,7 +36,7 @@ namespace gurps_manager_library.Models
         public int CurrentPoints;
 
         [BsonElement("Resouces")]
-        public Dictionary<string,int> Resouces;
+        public List<Resource> Resouces;
 
         [BsonElement("Status")]
         public Dictionary<string, int> Status;
