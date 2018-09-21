@@ -60,7 +60,7 @@ namespace gurps_manager_library.Models
                 Description = "The character has more than one functional mouth, which can be anywhere on the body. All mouths are able to breathe, eat and talk. Additional Mouth allows the character to bite more than once if he has Additional Attacks (page 42). If you have Segmented Mind (p. 70), the character is able to hold several conversations at the same time or perform two spells that require him to recite words. Other added benefits include difficulty silencing or suffocating the character and the ability to sing in harmony with yourself!",
                 Cost = 5,
                 Level = 0,
-                LevelCap = -1,
+                LevelCap = int.MaxValue,
                 Types = new List<string>(){
                     nameof(DisadvantageTypes.Physical),
                     nameof(DisadvantageTypes.Exotic)
@@ -121,7 +121,7 @@ namespace gurps_manager_library.Models
                 Description = "It's not easy to scare or intimidate the character! Add the character's Fearless level to the Will attribute each time he or she performs a Panic Check or has to resist the Intimidation skill (p. 204) or a supernatural power that induces fear. The level of Fearless should also be subtracted from the Intimidation tests made against it.",
                 Cost = 2,
                 Level = 0,
-                LevelCap = -1,
+                LevelCap = int.MaxValue,
                 Types = new List<string>(){
                     nameof(DisadvantageTypes.Mental)
                 },

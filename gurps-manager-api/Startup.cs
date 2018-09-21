@@ -26,6 +26,11 @@ namespace gurps_manager_api
         public void ConfigureServices(IServiceCollection services)
         {
             AddTransients(services);
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => { builder.AllowAnyOrigin(); });
+            });
             services.AddMvc();
         }
 
@@ -37,6 +42,9 @@ namespace gurps_manager_api
                 app.UseDeveloperExceptionPage();
             }
 
+            // Shows UseCors with named policy.
+            app.UseCors("AllowSpecificOrigin");
+            
             app.UseMvc();
         }
 
