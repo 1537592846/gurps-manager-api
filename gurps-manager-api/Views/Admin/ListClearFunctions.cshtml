@@ -4,8 +4,15 @@
 <body>
     @foreach (var item in Model)
     {
+        var path = "/api/" + item + "/insert";
+        <a href=@path>Insert @item</a><br />
+        ;
+    }
+    <br />
+    @foreach (var item in Model)
+    {
         var path = "/api/" + item + "/delete";
-        <a href=@path>@item</a><br />
+        <a href=@path>Delete @item</a><br />
         ;
     }
 </body>

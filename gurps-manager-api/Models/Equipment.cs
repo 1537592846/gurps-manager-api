@@ -39,7 +39,7 @@ namespace gurps_manager_library.Models
                 Description="A shield forged by a coward to protect for all attacks.",
                 Formula= "{NT:2,type:\"shield\",defence_bonus:\"+3\",damage_resistance:9,life_points:75}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -50,7 +50,7 @@ namespace gurps_manager_library.Models
                 Description = "Attack is as good as defence, said the one that forged this shield.",
                 Formula = "{NT:1,type:\"shield\",defence_bonus:\"+1\",cost:45,damage_resistance:1,life_points:80}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -61,7 +61,7 @@ namespace gurps_manager_library.Models
                 Description = "A simple leather overcoat that manages to stop shallow cuts and small blunt attacks.",
                 Formula = "{NT:1,type:\"body_armor\",location:\"chest,crotch\",damage_resistance:2}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -72,7 +72,7 @@ namespace gurps_manager_library.Models
                 Description = "Arm guard capable of defending from sharp sword attacks, if timed and aimed correctly.",
                 Formula = "{NT:1,type:\"piece_armor\",location:\"arm\",damage_resistance:3}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -83,7 +83,7 @@ namespace gurps_manager_library.Models
                 Description = "Arm guard capable of defending from sharp sword attacks, if timed and aimed correctly.",
                 Formula = "{NT:1,type:\"piece_armor\",location:\"legs\",damage_resistance:3}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -94,7 +94,7 @@ namespace gurps_manager_library.Models
                 Description = "A hero must-have piece of armor, forged with bronze.",
                 Formula = "{NT:1,type:\"piece_armor\",location:\"head,face\",damage_resistance:3}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -105,7 +105,7 @@ namespace gurps_manager_library.Models
                 Description = "A hero must-have piece of armor, forged with bronze.",
                 Formula = "{NT:3,type:\"piece_armor\",location:\"hand\",damage_resistance:5}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -116,7 +116,7 @@ namespace gurps_manager_library.Models
                 Description = "A hero must-have piece of armor, forged with bronze.",
                 Formula = "{NT:2,type:\"piece_armor\",location:\"feet\",damage_resistance:2}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -127,7 +127,7 @@ namespace gurps_manager_library.Models
                 Description = "A small and heavy one-handed ball of iron, made to destroy objects with a big swing.",
                 Formula = "{NT:2,type:\"short_range_weapon\",balancing_attack:\"+3 blunt\", range:1,parry:\"0D\",strengh:12}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -138,7 +138,7 @@ namespace gurps_manager_library.Models
                 Description = "A long sword, sometimes refered as one-and-half sword, made for a warrior.",
                 Formula = "{NT:2,type:\"short_range_weapon\",balancing_attack:\"+1 cut\",piercing_attack:\"+1 blunt\", range:1,parry:\"0\",strengh:10}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -149,7 +149,7 @@ namespace gurps_manager_library.Models
                 Description = "Long ranged weapon, simple yet effective to kill unsuspected enemies.",
                 Formula = "{NT:0,type:\"long_range_weapon\",piercing_attack:\"+2 pierce\",precision:3,range_min:15,range_max:20,cadency:1,clip_size:\"1\",recharge_turn:2,strenght:11}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
 
             equipment = new Equipment()
             {
@@ -160,7 +160,7 @@ namespace gurps_manager_library.Models
                 Description = "Small one-handed axes made for throwing.",
                 Formula = "{NT:0,type:\"long_range_weapon\",balancing_attack:\"+2 cut\",precision:2,range_min:1,range_max:1.5,cadency:1,clip_size:\"A\",recharge_turn:1,strenght:11}"
             };
-            new LanguageDataAccess().InsertOne(equipment);
+            new EquipmentDataAccess().InsertOne(equipment);
         }
     }
 }
