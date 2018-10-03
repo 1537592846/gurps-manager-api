@@ -2,18 +2,38 @@
 
 <html>
 <body>
-    @foreach (var item in Model)
-    {
-        var path = "/api/" + item + "/insert";
-        <a href=@path>Insert @item</a><br />
-        ;
-    }
-    <br />
-    @foreach (var item in Model)
-    {
-        var path = "/api/" + item + "/delete";
-        <a href=@path>Delete @item</a><br />
-        ;
-    }
+    <div>
+        <p>Delete Functions</p>
+        <p>
+            @foreach (var item in Model)
+            {
+                var path = "/api/" + item + "/delete";
+                <a href=@path>@item</a><br />
+                ;
+            }
+        </p>
+    </div>
+    <div>
+        <p>Insert Functions</p>
+        <p>
+            @foreach (var item in Model)
+            {
+                var path = "/api/" + item + "/insert";
+                <a href=@path>@item</a><br />
+                ;
+            }
+        </p>
+    </div>
+    <div>
+        <P>Get Functions</P>
+        <p>
+            @foreach (var item in Model)
+            {
+                var path = "/api/" + item + "/get";
+                <a href=@path>@item</a><br />
+                ;
+            }
+        </p>
+    </div>
 </body>
 </html>

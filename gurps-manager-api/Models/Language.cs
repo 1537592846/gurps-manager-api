@@ -72,7 +72,7 @@ namespace gurps_manager_library.Models
 
             language = new Language()
             {
-                Id = 4,
+                Id = 5,
                 Name = "Universal",
                 Description = "The Universal language was established during the first and second space explorations, allowing to different planets to communicate."
             };
