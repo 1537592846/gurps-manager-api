@@ -1,8 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
-using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace gurps_manager_library.DataAccess
 {
@@ -37,19 +37,19 @@ namespace gurps_manager_library.DataAccess
             }
         }
 
-        public string Find(int id)
+        public T FindOne<T>(int id)
         {
-            return _db.GetCollection(collectionName).FindOne(Query.EQ(idCampName, id)).ToJson();
+            return _db.GetCollection(collectionName).FindOneAs<T>(Query.EQ(idCampName, id));
+        }
+
+        public List<T> FindAll<T>()
+        {
+            return _db.GetCollection<T>(collectionName).FindAll().ToList();
         }
 
         public void Delete(int id)
         {
             _db.GetCollection(collectionName).Remove(Query.EQ(idCampName, id));
-        }
-
-        public string ReturnAllData<T>()
-        {
-            return JsonConvert.SerializeObject(_db.GetCollection<T>(collectionName).FindAll());
         }
 
         public void DeleteAll<T>()

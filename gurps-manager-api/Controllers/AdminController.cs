@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -20,7 +19,7 @@ namespace gurps_manager_api.Controllers
             {
                 list.Add(className.Name.Replace("Controller", ""));
             }
-            list.RemoveAt(list.Count-1);
+            list.RemoveAll(x=>x=="<>c");
 
             return View(list);
         }

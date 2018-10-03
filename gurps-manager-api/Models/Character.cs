@@ -35,10 +35,28 @@ namespace gurps_manager_library.Models
         [BsonElement("CurrentPoints")]
         public int CurrentPoints;
 
-        [BsonElement("Resouces")]
-        public List<Resource> Resouces;
+        [BsonElement("Resources")]
+        public int Resources;
 
         [BsonElement("Status")]
         public Dictionary<string, int> Status;
+
+        [BsonElement("Languages")]
+        public List<Language> Languages;
+
+        [BsonElement("Skills")]
+        public List<Skill> Skills;
+
+        [BsonElement("Disadvantages")]
+        public List<Disadvantage> Disadvantages;
+
+        [BsonElement("Advantages")]
+        public List<Advantage> Advantages;
+
+        [BsonElement("Inventory")]
+        public List<Inventory> Inventory;
+
+        [BsonElement("Equipments")]
+        public List<Equipment> Equipments;
     }
 }

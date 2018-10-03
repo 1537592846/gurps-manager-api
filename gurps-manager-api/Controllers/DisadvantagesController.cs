@@ -2,6 +2,7 @@
 using gurps_manager_library.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace gurps_manager_api.Controllers
 {
@@ -12,13 +13,13 @@ namespace gurps_manager_api.Controllers
         [EnableCors("AllowSpecificOrigin")]
         public string Get()
         {
-            return new DisadvantageDataAccess().ReturnAllData<Disadvantage>();
+            return JsonConvert.SerializeObject(new DisadvantageDataAccess().FindAll<Disadvantage>());
         }
 
         [HttpGet("get/{id}")]
         public string Get(int id)
         {
-            return new DisadvantageDataAccess().Find(id);
+            return JsonConvert.SerializeObject(new DisadvantageDataAccess().FindOne<Disadvantage>(id));
         }
 
         [HttpGet("insert")]

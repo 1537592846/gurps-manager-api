@@ -18,9 +18,6 @@ namespace gurps_manager_library.Models
         [BsonElement("Description")]
         public string Description;
 
-        [BsonElement("Cost")]
-        public int Cost;
-
         [BsonElement("Level")]
         public int Level;
 
@@ -29,7 +26,6 @@ namespace gurps_manager_library.Models
 
         public Language()
         {
-            this.Cost = 2;
             this.Level = 0;
             this.LevelCap = 3;
         }
