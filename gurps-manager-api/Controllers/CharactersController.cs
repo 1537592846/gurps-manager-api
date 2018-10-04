@@ -1,5 +1,6 @@
 ﻿using gurps_manager_library.DataAccess;
 using gurps_manager_library.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Newtonsoft.Json;
@@ -38,11 +39,11 @@ namespace gurps_manager_api.Controllers
         }
 
         [HttpPost("save")]
-        public bool Save(string content)
+        public bool Save([FromBody]JObject content)
         {
             try
             {
-                dynamic data = JObject.Parse(content);
+                dynamic data = JsonConvert.DeserializeObject<dynamic>(content.ToString());
                 Character character = new Character();
                 try
                 {
@@ -51,14 +52,14 @@ namespace gurps_manager_api.Controllers
                 catch { }
                 character.Id = data.id;
                 character.Name = data.name;
-                character.Age = data.age;
-                character.Height = data.height;
-                character.Weight = data.weight;
+                character.Age = data.age == null ? 0 : data.age;
+                character.Height = data.height == null ? 0 : data.height;
+                character.Weight = data.weight == null ? 0 : data.weight;
                 character.MinimunStatusPoints = data.min_status;
                 character.MaxPoints = data.max_points;
                 character.CurrentPoints = data.current_points;
-                character.Resources = data.resource;
-                character.Description = data.description;
+                character.Resources = data.resource == null ? 0 : data.resource;
+                character.Description = data.description!=null?"":data.description;
                 character.Status.Add("Strenght", (int)data.strenght);
                 character.Status.Add("Dexterity", (int)data.dexterity);
                 character.Status.Add("Intelligence", (int)data.intelligence);

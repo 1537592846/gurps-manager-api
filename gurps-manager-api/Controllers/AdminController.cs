@@ -17,7 +17,7 @@ namespace gurps_manager_api.Controllers
             var list = new List<string>();
             foreach (var className in classList.Where(x=>x.Name!="DataAccess"))
             {
-                list.Add(className.Name.Replace("DataAccess", ""));
+                list.Add(className.Name.Replace("DataAccess", "")+"s");
             }
 
             return View(list);

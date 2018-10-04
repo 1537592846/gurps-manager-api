@@ -29,7 +29,7 @@ namespace gurps_manager_api
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => { builder.AllowAnyOrigin(); });
+                    builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); });
             });
             services.AddMvc();
         }

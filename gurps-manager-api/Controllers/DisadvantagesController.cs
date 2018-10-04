@@ -10,7 +10,6 @@ namespace gurps_manager_api.Controllers
     public class DisadvantagesController : Controller
     {
         [HttpGet("get")]
-        [EnableCors("AllowSpecificOrigin")]
         public string Get()
         {
             return JsonConvert.SerializeObject(new DisadvantageDataAccess().FindAll<Disadvantage>());
