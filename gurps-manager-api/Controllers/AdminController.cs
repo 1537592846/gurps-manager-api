@@ -12,14 +12,13 @@ namespace gurps_manager_api.Controllers
         public ViewResult ListClearFunctions()
         {
             var classList = Assembly.GetExecutingAssembly().GetTypes()
-                 .Where(t => t.Namespace == "gurps_manager_api.Controllers")
+                 .Where(t => t.Namespace == "gurps_manager_library.DataAccess")
                  .ToList();
             var list = new List<string>();
-            foreach (var className in classList.Where(x => !x.Name.Contains( "AdminController")))
+            foreach (var className in classList.Where(x=>x.Name!="DataAccess"))
             {
-                list.Add(className.Name.Replace("Controller", ""));
+                list.Add(className.Name.Replace("DataAccess", ""));
             }
-            list.RemoveAll(x=>x=="<>c");
 
             return View(list);
         }

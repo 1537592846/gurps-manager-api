@@ -27,8 +27,16 @@ namespace gurps_manager_library.Models
         [BsonElement("Weight")]
         public double Weight;
 
+        [BsonElement("Quantity")]
+        public int Quantity;
+
         [BsonElement("Formula")]
         public string Formula;
+
+        public Item()
+        {
+            Cost = 0;
+        }
 
         public static void InsertItems()
         {

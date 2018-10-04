@@ -12,7 +12,7 @@ namespace gurps_manager_library.DataAccess
         MongoServer _server;
         MongoDatabase _db;
         string collectionName;
-        string idCampName="Id";
+        string idCampName="_id";
 
         public DataAccess(string collection)
         {

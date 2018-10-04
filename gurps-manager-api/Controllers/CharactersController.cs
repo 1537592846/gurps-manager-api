@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -39,9 +40,115 @@ namespace gurps_manager_api.Controllers
         [HttpPost("save")]
         public bool Save(string content)
         {
-            Character character = new Character();
-            var data = JsonConvert.DeserializeObject<List<object>>(content);
-            //TODO
+            try
+            {
+                dynamic data = JObject.Parse(content);
+                Character character = new Character();
+                try
+                {
+                    character = new CharacterDataAccess().FindOne(data.id);
+                }
+                catch { }
+                character.Id = data.id;
+                character.Name = data.name;
+                character.Age = data.age;
+                character.Height = data.height;
+                character.Weight = data.weight;
+                character.MinimunStatusPoints = data.min_status;
+                character.MaxPoints = data.max_points;
+                character.CurrentPoints = data.current_points;
+                character.Resources = data.resource;
+                character.Description = data.description;
+                character.Status.Add("Strenght", (int)data.strenght);
+                character.Status.Add("Dexterity", (int)data.dexterity);
+                character.Status.Add("Intelligence", (int)data.intelligence);
+                character.Status.Add("Health", (int)data.health);
+                character.Status.Add("MaxLifePoints", (int)data.max_life_points);
+                character.Status.Add("CurrentLifePoints", (int)data.current_life_points);
+                character.Status.Add("Will", (int)data.will);
+                character.Status.Add("Perception", (int)data.perception);
+                character.Status.Add("MaxFatiguePoints", (int)data.max_fatigue_points);
+                character.Status.Add("CurrentFatiguePoints", (int)data.current_fatigue_points);
+                character.Status.Add("Speed", (int)data.speed);
+                character.Status.Add("BasicMovement", (int)data.basic_movement);
+                character.Status.Add("MaxCarryWeight", (int)data.max_carry_weight);
+                character.Status.Add("CurrentCarryWeight", (int)data.current_carry_weight);
+                character.Equipments.LeftHand = data.equipments.left_hand;
+                character.Equipments.RightHand = data.equipments.right_hand;
+                character.Equipments.BothHands = data.equipments.both_hands;
+                character.Equipments.Shield = data.equipments.shield;
+                character.Equipments.Hands = data.equipments.head;
+                character.Equipments.Torax = data.equipments.torax;
+                character.Equipments.Legs = data.equipments.legs;
+                character.Equipments.Feet = data.equipments.feet;
+                character.Equipments.Arms = data.equipments.arms;
+                character.Equipments.Hands = data.equipments.hands;
+                foreach (var language in data.languages)
+                {
+                    Language languageDatabase = new LanguageDataAccess().FindOne<Language>((int)language.id);
+                    languageDatabase.Level = language.level;
+                    character.Languages.Add(languageDatabase);
+                }
+                foreach (var skill in data.skills)
+                {
+                    Skill skillDatabase = new SkillDataAccess().FindOne<Skill>((int)skill.id);
+                    skillDatabase.Level = skill.level;
+                    character.Skills.Add(skillDatabase);
+                }
+                foreach (var advantage in data.advantages)
+                {
+                    Advantage advantageDatabase = new AdvantageDataAccess().FindOne<Advantage>((int)advantage.id);
+                    advantageDatabase.Level = advantage.level;
+                    character.Advantages.Add(advantageDatabase);
+                }
+                foreach (var disadvantage in data.disadvantages)
+                {
+                    Disadvantage disadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)disadvantage.id);
+                    disadvantageDatabase.Level = disadvantage.level;
+                    character.Disadvantages.Add(disadvantageDatabase);
+                }
+                foreach (var item in data.inventory.one_hand_weapons)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.OneHandWeapons.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.two_hand_weapons)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.TwoHandWeapons.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.shields)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Shields.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.armors)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Armors.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.consumables)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Consumables.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.others)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Others.Add(itemDatabase);
+                }
+                new CharacterDataAccess().InsertOne<Character>(character);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
             return true;
         }
 
