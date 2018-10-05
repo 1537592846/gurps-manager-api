@@ -34,4 +34,11 @@
         public object inventory { get; set; }
         public object equipments { get; set; }
     }
+
+    public class CharacterJson
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
 }

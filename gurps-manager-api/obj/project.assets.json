@@ -13813,23 +13813,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\770688\\.nuget\\packages\\": {},
+    "C:\\Users\\andre\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Source Tree\\gurps-manager-api\\gurps-manager-api\\gurps-manager-api.csproj",
+      "projectUniqueName": "C:\\Projetos\\gurps-manager-api\\gurps-manager-api\\gurps-manager-api.csproj",
       "projectName": "gurps-manager-api",
-      "projectPath": "C:\\Source Tree\\gurps-manager-api\\gurps-manager-api\\gurps-manager-api.csproj",
-      "packagesPath": "C:\\Users\\770688\\.nuget\\packages\\",
-      "outputPath": "C:\\Source Tree\\gurps-manager-api\\gurps-manager-api\\obj\\",
+      "projectPath": "C:\\Projetos\\gurps-manager-api\\gurps-manager-api\\gurps-manager-api.csproj",
+      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
+      "outputPath": "C:\\Projetos\\gurps-manager-api\\gurps-manager-api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\770688\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -13837,7 +13837,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://desenvolvimento/nuget/repository": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

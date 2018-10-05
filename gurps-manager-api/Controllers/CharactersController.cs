@@ -26,6 +26,22 @@ namespace gurps_manager_api.Controllers
             return JsonConvert.SerializeObject(new CharacterDataAccess().FindOne<Character>(id));
         }
 
+        [HttpGet("list")]
+        public string List()
+        {
+            var charactersJson = new List<CharacterJson>();
+            foreach (var character in new CharacterDataAccess().FindAll<Character>())
+            {
+                charactersJson.Add(new CharacterJson()
+                {
+                    Id = character.Id,
+                    Name = character.Name,
+                    Description = character.Description
+                });
+            }
+            return JsonConvert.SerializeObject(charactersJson);
+        }
+
         [HttpGet("next")]
         public string Next()
         {
@@ -59,7 +75,7 @@ namespace gurps_manager_api.Controllers
                 character.MaxPoints = data.max_points;
                 character.CurrentPoints = data.current_points;
                 character.Resources = data.resource == null ? 0 : data.resource;
-                character.Description = data.description!=null?"":data.description;
+                character.Description = data.description == null ? "" : data.description;
                 character.Status.Add("Strenght", (int)data.strenght);
                 character.Status.Add("Dexterity", (int)data.dexterity);
                 character.Status.Add("Intelligence", (int)data.intelligence);
@@ -74,16 +90,16 @@ namespace gurps_manager_api.Controllers
                 character.Status.Add("BasicMovement", (int)data.basic_movement);
                 character.Status.Add("MaxCarryWeight", (int)data.max_carry_weight);
                 character.Status.Add("CurrentCarryWeight", (int)data.current_carry_weight);
-                character.Equipments.LeftHand = data.equipments.left_hand;
-                character.Equipments.RightHand = data.equipments.right_hand;
-                character.Equipments.BothHands = data.equipments.both_hands;
-                character.Equipments.Shield = data.equipments.shield;
-                character.Equipments.Hands = data.equipments.head;
-                character.Equipments.Torax = data.equipments.torax;
-                character.Equipments.Legs = data.equipments.legs;
-                character.Equipments.Feet = data.equipments.feet;
-                character.Equipments.Arms = data.equipments.arms;
-                character.Equipments.Hands = data.equipments.hands;
+                character.Equipments.LeftHand = data.equipments.left_hand.ToString() == "{}" ? null : data.equipments.left_hand;
+                character.Equipments.RightHand = data.equipments.right_hand.ToString() == "{}" ? null : data.equipments.right_hand;
+                character.Equipments.BothHands = data.equipments.both_hands.ToString() == "{}" ? null : data.equipments.both_hands;
+                character.Equipments.Shield = data.equipments.shield.ToString() == "{}" ? null : data.equipments.shield;
+                character.Equipments.Hands = data.equipments.head.ToString() == "{}" ? null : data.equipments.head;
+                character.Equipments.Torax = data.equipments.torax.ToString() == "{}" ? null : data.equipments.torax;
+                character.Equipments.Legs = data.equipments.legs.ToString() == "{}" ? null : data.equipments.legs;
+                character.Equipments.Feet = data.equipments.feet.ToString() == "{}" ? null : data.equipments.feet;
+                character.Equipments.Arms = data.equipments.arms.ToString() == "{}" ? null : data.equipments.arms;
+                character.Equipments.Hands = data.equipments.hands.ToString() == "{}" ? null : data.equipments.hands;
                 foreach (var language in data.languages)
                 {
                     Language languageDatabase = new LanguageDataAccess().FindOne<Language>((int)language.id);
