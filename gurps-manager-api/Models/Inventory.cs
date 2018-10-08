@@ -7,6 +7,16 @@ namespace gurps_manager_library.Models
 {
     public class Inventory
     {
+        public Inventory()
+        {
+            OneHandWeapons = new List<Item>();
+            TwoHandWeapons = new List<Item>();
+            Shields = new List<Item>();
+            Armors = new List<Item>();
+            Consumables = new List<Item>();
+            Others = new List<Item>();
+        }
+
         [BsonElement("OneHandWeapons")]
         public List<Item> OneHandWeapons;
 

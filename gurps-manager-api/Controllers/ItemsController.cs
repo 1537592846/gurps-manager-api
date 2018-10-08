@@ -2,6 +2,7 @@
 using gurps_manager_library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace gurps_manager_api.Controllers
 {
@@ -20,16 +21,32 @@ namespace gurps_manager_api.Controllers
             return JsonConvert.SerializeObject(new ItemDataAccess().FindOne<Item>(id));
         }
 
-        [HttpGet("insert")]
-        public void Insert()
-        {
-            Item.InsertItems();
-        }
-
         [HttpGet("delete")]
         public void Delete()
         {
             new ItemDataAccess().DeleteAll<Item>();
+        }
+
+        [Route("AddItem")]
+        public ActionResult AddItem()
+        {
+            return View();
+        }
+
+        [Route("AddItem")]
+        [HttpPost]
+        public ActionResult AddItem(Item item)
+        {
+            var list = new ItemDataAccess().FindAll<Item>();
+            item.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
+            item.Name = Request.Form["Name"];
+            item.Description = Request.Form["Description"];
+            item.Cost = int.Parse(Request.Form["Cost"]);
+            item.NT = int.Parse(Request.Form["NT"]);
+            item.Weight = double.Parse(Request.Form["Weight"]);
+            item.Formula = Request.Form["Formula"];
+            new ItemDataAccess().InsertOne(item);
+            return RedirectToAction("Main", "Admin");
         }
     }
 }

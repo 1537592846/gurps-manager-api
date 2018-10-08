@@ -2,6 +2,7 @@
 using gurps_manager_library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace gurps_manager_api.Controllers
 {
@@ -20,16 +21,28 @@ namespace gurps_manager_api.Controllers
             return JsonConvert.SerializeObject(new LanguageDataAccess().FindOne<Language>(id));
         }
 
-        [HttpGet("insert")]
-        public void Insert()
-        {
-            Language.InsertLanguages();
-        }
-
         [HttpGet("delete")]
         public void Delete()
         {
             new LanguageDataAccess().DeleteAll<Language>();
+        }
+
+        [Route("AddLanguage")]
+        public ActionResult AddLanguage()
+        {
+            return View();
+        }
+
+        [Route("AddLanguage")]
+        [HttpPost]
+        public ActionResult AddLanguage(Language language)
+        {
+            var list = new ItemDataAccess().FindAll<Item>();
+            language.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
+            language.Name = Request.Form["Name"];
+            language.Description = Request.Form["Description"];
+            new ItemDataAccess().InsertOne(language);
+            return RedirectToAction("Main", "Admin");
         }
     }
 }

@@ -1,0 +1,75 @@
+﻿@model gurps_manager_library.Models.Advantage
+
+<h2>Advantage</h2>
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Add a new Advantage to the database</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div>
+            <div>
+                @Html.LabelFor(model => model.Name)
+                @Html.TextBoxFor(model => model.Name)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Description)
+                @Html.TextBoxFor(model => model.Description)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Cost)
+                @Html.TextBoxFor(model => model.Cost)
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.LevelCap)
+                @Html.TextBoxFor(model => model.LevelCap)
+            </div>
+
+            <div>
+                @Html.Label("Mental")
+                @Html.CheckBox("Mental")
+            </div>
+
+            <div>
+                @Html.Label("Physical")
+                @Html.CheckBox("Physical")
+            </div>
+
+            <div>
+                @Html.Label("Social")
+                @Html.CheckBox("Social")
+            </div>
+
+            <div>
+                @Html.Label("Exotic")
+                @Html.CheckBox("Exotic")
+            </div>
+
+            <div>
+                @Html.Label("Supernatural")
+                @Html.CheckBox("Supernatural")
+            </div>
+
+            <div>
+                @Html.Label("Mundane")
+                @Html.CheckBox("Mundane")
+            </div>
+
+            <div>
+                @Html.LabelFor(model => model.Formula)
+                @Html.TextBoxFor(model => model.Formula)
+            </div>
+
+            <div>
+                <input type="submit" value="Add" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

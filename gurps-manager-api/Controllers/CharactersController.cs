@@ -1,6 +1,5 @@
 ﻿using gurps_manager_library.DataAccess;
 using gurps_manager_library.Models;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
 using Newtonsoft.Json;
@@ -112,17 +111,17 @@ namespace gurps_manager_api.Controllers
                     skillDatabase.Level = skill.level;
                     character.Skills.Add(skillDatabase);
                 }
-                foreach (var advantage in data.advantages)
+                foreach (var Disadvantage in data.Disadvantages)
                 {
-                    Advantage advantageDatabase = new AdvantageDataAccess().FindOne<Advantage>((int)advantage.id);
-                    advantageDatabase.Level = advantage.level;
-                    character.Advantages.Add(advantageDatabase);
+                    Disadvantage DisadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)Disadvantage.id);
+                    DisadvantageDatabase.Level = Disadvantage.level;
+                    character.Disadvantages.Add(DisadvantageDatabase);
                 }
-                foreach (var disadvantage in data.disadvantages)
+                foreach (var disDisadvantage in data.disDisadvantages)
                 {
-                    Disadvantage disadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)disadvantage.id);
-                    disadvantageDatabase.Level = disadvantage.level;
-                    character.Disadvantages.Add(disadvantageDatabase);
+                    DisDisadvantage disDisadvantageDatabase = new DisDisadvantageDataAccess().FindOne<DisDisadvantage>((int)disDisadvantage.id);
+                    disDisadvantageDatabase.Level = disDisadvantage.level;
+                    character.DisDisadvantages.Add(disDisadvantageDatabase);
                 }
                 foreach (var item in data.inventory.one_hand_weapons)
                 {
