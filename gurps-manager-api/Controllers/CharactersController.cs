@@ -111,17 +111,17 @@ namespace gurps_manager_api.Controllers
                     skillDatabase.Level = skill.level;
                     character.Skills.Add(skillDatabase);
                 }
-                foreach (var Disadvantage in data.Disadvantages)
+                foreach (var advantage in data.advantages)
                 {
-                    Disadvantage DisadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)Disadvantage.id);
-                    DisadvantageDatabase.Level = Disadvantage.level;
-                    character.Disadvantages.Add(DisadvantageDatabase);
+                    Advantage advantageDatabase = new AdvantageDataAccess().FindOne<Advantage>((int)advantage.id);
+                    advantageDatabase.Level = advantage.level;
+                    character.Advantages.Add(advantageDatabase);
                 }
-                foreach (var disDisadvantage in data.disDisadvantages)
+                foreach (var disadvantage in data.disadvantage)
                 {
-                    DisDisadvantage disDisadvantageDatabase = new DisDisadvantageDataAccess().FindOne<DisDisadvantage>((int)disDisadvantage.id);
-                    disDisadvantageDatabase.Level = disDisadvantage.level;
-                    character.DisDisadvantages.Add(disDisadvantageDatabase);
+                    Disadvantage disadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)disadvantage.id);
+                    disadvantageDatabase.Level = disadvantage.level;
+                    character.Disadvantages.Add(disadvantageDatabase);
                 }
                 foreach (var item in data.inventory.one_hand_weapons)
                 {

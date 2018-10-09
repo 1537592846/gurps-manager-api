@@ -29,8 +29,8 @@
         public object current_carry_weight { get; set; }
         public object languages { get; set; }
         public object skills { get; set; }
-        public object Disadvantages { get; set; }
-        public object disDisadvantages { get; set; }
+        public object advantages { get; set; }
+        public object disadvantages { get; set; }
         public object inventory { get; set; }
         public object equipments { get; set; }
     }
