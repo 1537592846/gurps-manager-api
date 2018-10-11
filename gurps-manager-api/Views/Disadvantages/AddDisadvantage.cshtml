@@ -1,13 +1,13 @@
-﻿@model gurps_manager_library.Models.Advantage
+﻿@model gurps_manager_library.Models.Disadvantage
 
-<h2>Advantage</h2>
+<h2>Disadvantages</h2>
 
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Add a new Advantage to the database</h4>
+        <h4>Add a new Disadvantages to the database</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -33,33 +33,18 @@
             </div>
 
             <div>
-                @Html.Label("Mental")
                 @Html.CheckBox("Mental")
-            </div>
-
-            <div>
-                @Html.Label("Physical")
+                @Html.Label("Mental")
                 @Html.CheckBox("Physical")
-            </div>
-
-            <div>
-                @Html.Label("Social")
+                @Html.Label("Physical")
                 @Html.CheckBox("Social")
-            </div>
-
-            <div>
-                @Html.Label("Exotic")
+                @Html.Label("Social")
                 @Html.CheckBox("Exotic")
-            </div>
-
-            <div>
-                @Html.Label("Supernatural")
+                @Html.Label("Exotic")
                 @Html.CheckBox("Supernatural")
-            </div>
-
-            <div>
-                @Html.Label("Mundane")
+                @Html.Label("Supernatural")
                 @Html.CheckBox("Mundane")
+                @Html.Label("Mundane")
             </div>
 
             <div>

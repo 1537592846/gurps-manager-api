@@ -1,4 +1,4 @@
-﻿@model gurps_manager_library.Models.Advantage
+﻿@model gurps_manager_library.Models.Skill
 
 <h2>Advantage</h2>
 
@@ -28,28 +28,25 @@
             </div>
 
             <div>
-                @Html.LabelFor(model => model.LevelCap)
-                @Html.TextBoxFor(model => model.LevelCap)
+                @Html.CheckBox("Strenght")
+                @Html.Label("Strenght")
+                @Html.CheckBox("Dexterity")
+                @Html.Label("Dexterity")
+                @Html.CheckBox("Intelligence")
+                @Html.Label("Intelligence")
+                @Html.CheckBox("Health")
+                @Html.Label("Health")
             </div>
 
             <div>
-                @Html.CheckBox("Mental")
-                @Html.Label("Mental")
-                @Html.CheckBox("Physical")
-                @Html.Label("Physical")
-                @Html.CheckBox("Social")
-                @Html.Label("Social")
-                @Html.CheckBox("Exotic")
-                @Html.Label("Exotic")
-                @Html.CheckBox("Supernatural")
-                @Html.Label("Supernatural")
-                @Html.CheckBox("Mundane")
-                @Html.Label("Mundane")
-            </div>
-            
-            <div>
-                @Html.LabelFor(model => model.Formula)
-                @Html.TextBoxFor(model => model.Formula)
+                @Html.CheckBox("Easy")
+                @Html.Label("Easy")
+                @Html.CheckBox("Moderate")
+                @Html.Label("Moderate")
+                @Html.CheckBox("Hard")
+                @Html.Label("Hard")
+                @Html.CheckBox("VeryHard")
+                @Html.Label("Very Hard")
             </div>
 
             <div>

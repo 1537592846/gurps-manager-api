@@ -1,13 +1,13 @@
-﻿@model gurps_manager_library.Models.Advantage
+﻿@model gurps_manager_library.Models.Equipment
 
-<h2>Advantage</h2>
+<h2>Equipment</h2>
 
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Add a new Advantage to the database</h4>
+        <h4>Add a new Equipment to the database</h4>
         <hr />
         @Html.ValidationSummary(true)
 
@@ -28,25 +28,10 @@
             </div>
 
             <div>
-                @Html.LabelFor(model => model.LevelCap)
-                @Html.TextBoxFor(model => model.LevelCap)
+                @Html.LabelFor(model => model.Weight)
+                @Html.TextBoxFor(model => model.Weight)
             </div>
 
-            <div>
-                @Html.CheckBox("Mental")
-                @Html.Label("Mental")
-                @Html.CheckBox("Physical")
-                @Html.Label("Physical")
-                @Html.CheckBox("Social")
-                @Html.Label("Social")
-                @Html.CheckBox("Exotic")
-                @Html.Label("Exotic")
-                @Html.CheckBox("Supernatural")
-                @Html.Label("Supernatural")
-                @Html.CheckBox("Mundane")
-                @Html.Label("Mundane")
-            </div>
-            
             <div>
                 @Html.LabelFor(model => model.Formula)
                 @Html.TextBoxFor(model => model.Formula)

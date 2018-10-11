@@ -43,13 +43,9 @@ namespace gurps_manager_api.Controllers
             advantage.Cost = int.Parse(Request.Form["Cost"]);
             advantage.Level = 0;
             advantage.LevelCap = int.Parse(Request.Form["LevelCap"]);
+            if (advantage.LevelCap == 0) advantage.LevelCap = int.MaxValue;
             advantage.Formula = Request.Form["Formula"];
-            if (Request.Form["Mental"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Mental));
-            if (Request.Form["Physical"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Physical));
-            if (Request.Form["Social"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Social));
-            if (Request.Form["Exotic"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Exotic));
-            if (Request.Form["Supernatural"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Supernatural));
-            if (Request.Form["Mundane"].Contains("true")) advantage.Types.Add(nameof(Advantage.AdvantageTypes.Mundane));
+            advantage.Types.AddRange(Request.Form.Where(x => x.Value.Contains("true")).Select(x=>x.Key));
             new AdvantageDataAccess().InsertOne(advantage);
             return RedirectToAction("Main", "Admin");
         }

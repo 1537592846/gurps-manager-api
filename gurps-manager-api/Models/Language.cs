@@ -1,5 +1,4 @@
-﻿using gurps_manager_library.DataAccess;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace gurps_manager_library.Models

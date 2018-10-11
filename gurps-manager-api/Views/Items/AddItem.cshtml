@@ -1,4 +1,4 @@
-﻿@model gurps_manager_library.Models.Advantage
+﻿@model gurps_manager_library.Models.Item
 
 <h2>Advantage</h2>
 
@@ -23,43 +23,18 @@
             </div>
 
             <div>
+                @Html.LabelFor(model => model.NT)
+                @Html.TextBoxFor(model => model.NT)
+            </div>
+
+            <div>
                 @Html.LabelFor(model => model.Cost)
                 @Html.TextBoxFor(model => model.Cost)
             </div>
 
             <div>
-                @Html.LabelFor(model => model.LevelCap)
-                @Html.TextBoxFor(model => model.LevelCap)
-            </div>
-
-            <div>
-                @Html.Label("Mental")
-                @Html.CheckBox("Mental")
-            </div>
-
-            <div>
-                @Html.Label("Physical")
-                @Html.CheckBox("Physical")
-            </div>
-
-            <div>
-                @Html.Label("Social")
-                @Html.CheckBox("Social")
-            </div>
-
-            <div>
-                @Html.Label("Exotic")
-                @Html.CheckBox("Exotic")
-            </div>
-
-            <div>
-                @Html.Label("Supernatural")
-                @Html.CheckBox("Supernatural")
-            </div>
-
-            <div>
-                @Html.Label("Mundane")
-                @Html.CheckBox("Mundane")
+                @Html.LabelFor(model => model.Weight)
+                @Html.TextBoxFor(model => model.Weight)
             </div>
 
             <div>

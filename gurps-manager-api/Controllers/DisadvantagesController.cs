@@ -44,13 +44,9 @@ namespace gurps_manager_api.Controllers
             disadvantage.Cost = int.Parse(Request.Form["Cost"]);
             disadvantage.Level = 0;
             disadvantage.LevelCap = int.Parse(Request.Form["LevelCap"]);
+            if (disadvantage.LevelCap == 0) disadvantage.LevelCap = int.MaxValue;
             disadvantage.Formula = Request.Form["Formula"];
-            if (Request.Form["Mental"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Mental));
-            if (Request.Form["Physical"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Physical));
-            if (Request.Form["Social"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Social));
-            if (Request.Form["Exotic"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Exotic));
-            if (Request.Form["Supernatural"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Supernatural));
-            if (Request.Form["Mundane"].Contains("true")) disadvantage.Types.Add(nameof(Disadvantage.DisadvantageTypes.Mundane));
+            disadvantage.Types.AddRange(Request.Form.Where(x => x.Value.Contains("true")).Select(x => x.Key));
             new DisadvantageDataAccess().InsertOne(disadvantage);
             return RedirectToAction("Main", "Admin");
         }
