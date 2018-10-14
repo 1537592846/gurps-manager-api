@@ -89,16 +89,166 @@ namespace gurps_manager_api.Controllers
                 character.Status.Add("BasicMovement", (int)data.basic_movement);
                 character.Status.Add("MaxCarryWeight", (int)data.max_carry_weight);
                 character.Status.Add("CurrentCarryWeight", (int)data.current_carry_weight);
-                character.Equipments.LeftHand = data.equipments.left_hand.ToString() == "{}" ? null : data.equipments.left_hand;
-                character.Equipments.RightHand = data.equipments.right_hand.ToString() == "{}" ? null : data.equipments.right_hand;
-                character.Equipments.BothHands = data.equipments.both_hands.ToString() == "{}" ? null : data.equipments.both_hands;
-                character.Equipments.Shield = data.equipments.shield.ToString() == "{}" ? null : data.equipments.shield;
-                character.Equipments.Hands = data.equipments.head.ToString() == "{}" ? null : data.equipments.head;
-                character.Equipments.Torax = data.equipments.torax.ToString() == "{}" ? null : data.equipments.torax;
-                character.Equipments.Legs = data.equipments.legs.ToString() == "{}" ? null : data.equipments.legs;
-                character.Equipments.Feet = data.equipments.feet.ToString() == "{}" ? null : data.equipments.feet;
-                character.Equipments.Arms = data.equipments.arms.ToString() == "{}" ? null : data.equipments.arms;
-                character.Equipments.Hands = data.equipments.hands.ToString() == "{}" ? null : data.equipments.hands;
+                try
+                {
+                    var left_hand = JsonConvert.DeserializeObject(data.equipments.left_hand.ToString().Replace("\r\n", ""));
+                    if (left_hand.name == null)
+                    {
+                        character.Equipments.LeftHand = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.LeftHand = new EquipmentDataAccess().FindByName(left_hand.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.LeftHand = new Equipment();
+                }
+                try
+                {
+                    var right_hand = JsonConvert.DeserializeObject(data.equipments.right_hand.ToString().Replace("\r\n", ""));
+                    if (right_hand.name == null)
+                    {
+                        character.Equipments.RightHand = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.RightHand = new EquipmentDataAccess().FindByName(right_hand.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.RightHand = new Equipment();
+                }
+                try
+                {
+                    var both_hand = JsonConvert.DeserializeObject(data.equipments.both_hand.ToString().Replace("\r\n", ""));
+                    if (both_hand.name == null)
+                    {
+                        character.Equipments.BothHands = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.BothHands = new EquipmentDataAccess().FindByName(both_hand.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.BothHands = new Equipment();
+                }
+                try
+                {
+                    var shield = JsonConvert.DeserializeObject(data.equipments.shield.ToString().Replace("\r\n", ""));
+                    if (shield.name == null)
+                    {
+                        character.Equipments.Shield = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Shield = new EquipmentDataAccess().FindByName(shield.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Shield = new Equipment();
+                }
+                try
+                {
+                    var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
+                    if (hands.name == null)
+                    {
+                        character.Equipments.Hands = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Hands = new Equipment();
+                }
+                try
+                {
+                    var torax = JsonConvert.DeserializeObject(data.equipments.torax.ToString().Replace("\r\n", ""));
+                    if (torax.name == null)
+                    {
+                        character.Equipments.Torax = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Torax = new EquipmentDataAccess().FindByName(torax.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Torax = new Equipment();
+                }
+                try
+                {
+                    var legs = JsonConvert.DeserializeObject(data.equipments.legs.ToString().Replace("\r\n", ""));
+                    if (legs.name == null)
+                    {
+                        character.Equipments.Legs = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Legs = new EquipmentDataAccess().FindByName(legs.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Legs = new Equipment();
+                }
+                try
+                {
+                    var feet = JsonConvert.DeserializeObject(data.equipments.feet.ToString().Replace("\r\n", ""));
+                    if (feet.name == null)
+                    {
+                        character.Equipments.Feet = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Feet = new EquipmentDataAccess().FindByName(feet.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Feet = new Equipment();
+                }
+                try
+                {
+                    var arms = JsonConvert.DeserializeObject(data.equipments.arms.ToString().Replace("\r\n", ""));
+                    if (arms.name == null)
+                    {
+                        character.Equipments.Arms = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Arms = new EquipmentDataAccess().FindByName(arms.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Arms = new Equipment();
+                }
+                try
+                {
+                    var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
+                    if (hands.name == null)
+                    {
+                        character.Equipments.Hands = new Equipment();
+                    }
+                    else
+                    {
+                        character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                    }
+                }
+                catch
+                {
+                    character.Equipments.Hands = new Equipment();
+                }
                 foreach (var language in data.languages)
                 {
                     Language languageDatabase = new LanguageDataAccess().FindOne<Language>((int)language.id);

@@ -42,6 +42,11 @@ namespace gurps_manager_library.DataAccess
             return _db.GetCollection(collectionName).FindOneAs<T>(Query.EQ(idCampName, id));
         }
 
+        public T FindByName<T>(string name)
+        {
+            return _db.GetCollection(collectionName).FindOneAs<T>(Query.EQ("Name", name));
+        }
+
         public List<T> FindAll<T>()
         {
             return _db.GetCollection<T>(collectionName).FindAll().ToList();

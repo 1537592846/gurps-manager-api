@@ -19,3 +19,4 @@ C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Debug\netcoreapp2.0\gurps-ma
 C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Debug\netcoreapp2.0\gurps-manager-api.AssemblyInfo.cs
 C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Debug\netcoreapp2.0\gurps-manager-api.dll
 C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Debug\netcoreapp2.0\gurps-manager-api.pdb
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Debug\netcoreapp2.0\gurps-manager-api.csprojAssemblyReference.cache
