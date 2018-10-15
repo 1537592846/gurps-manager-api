@@ -67,14 +67,14 @@ namespace gurps_manager_api.Controllers
                 catch { }
                 character.Id = data.id;
                 character.Name = data.name;
-                character.Age = data.age == null ? 0 : data.age;
-                character.Height = data.height == null ? 0 : data.height;
-                character.Weight = data.weight == null ? 0 : data.weight;
+                character.Age = data.age == "" ? 0 : data.age;
+                character.Height = data.height == "" ? 0 : data.height;
+                character.Weight = data.weight == "" ? 0 : data.weight;
                 character.MinimunStatusPoints = data.min_status;
                 character.MaxPoints = data.max_points;
                 character.CurrentPoints = data.current_points;
-                character.Resources = data.resource == null ? 0 : data.resource;
-                character.Description = data.description == null ? "" : data.description;
+                character.Resources = data.resources;
+                character.Description = data.description == "" ? "" : data.description;
                 character.Status.Add("Strenght", (int)data.strenght);
                 character.Status.Add("Dexterity", (int)data.dexterity);
                 character.Status.Add("Intelligence", (int)data.intelligence);
@@ -92,14 +92,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var left_hand = JsonConvert.DeserializeObject(data.equipments.left_hand.ToString().Replace("\r\n", ""));
-                    if (left_hand.name == null)
-                    {
-                        character.Equipments.LeftHand = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.LeftHand = new EquipmentDataAccess().FindByName(left_hand.name);
-                    }
+                    character.Equipments.LeftHand = new EquipmentDataAccess().FindByName(left_hand.name);
                 }
                 catch
                 {
@@ -108,14 +101,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var right_hand = JsonConvert.DeserializeObject(data.equipments.right_hand.ToString().Replace("\r\n", ""));
-                    if (right_hand.name == null)
-                    {
-                        character.Equipments.RightHand = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.RightHand = new EquipmentDataAccess().FindByName(right_hand.name);
-                    }
+                    character.Equipments.RightHand = new EquipmentDataAccess().FindByName(right_hand.name);
                 }
                 catch
                 {
@@ -124,14 +110,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var both_hand = JsonConvert.DeserializeObject(data.equipments.both_hand.ToString().Replace("\r\n", ""));
-                    if (both_hand.name == null)
-                    {
-                        character.Equipments.BothHands = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.BothHands = new EquipmentDataAccess().FindByName(both_hand.name);
-                    }
+                    character.Equipments.BothHands = new EquipmentDataAccess().FindByName(both_hand.name);
                 }
                 catch
                 {
@@ -140,14 +119,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var shield = JsonConvert.DeserializeObject(data.equipments.shield.ToString().Replace("\r\n", ""));
-                    if (shield.name == null)
-                    {
-                        character.Equipments.Shield = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Shield = new EquipmentDataAccess().FindByName(shield.name);
-                    }
+                    character.Equipments.Shield = new EquipmentDataAccess().FindByName(shield.name);
                 }
                 catch
                 {
@@ -156,14 +128,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
-                    if (hands.name == null)
-                    {
-                        character.Equipments.Hands = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
-                    }
+                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
                 }
                 catch
                 {
@@ -172,14 +137,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var torax = JsonConvert.DeserializeObject(data.equipments.torax.ToString().Replace("\r\n", ""));
-                    if (torax.name == null)
-                    {
-                        character.Equipments.Torax = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Torax = new EquipmentDataAccess().FindByName(torax.name);
-                    }
+                    character.Equipments.Torax = new EquipmentDataAccess().FindByName(torax.name);
                 }
                 catch
                 {
@@ -188,14 +146,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var legs = JsonConvert.DeserializeObject(data.equipments.legs.ToString().Replace("\r\n", ""));
-                    if (legs.name == null)
-                    {
-                        character.Equipments.Legs = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Legs = new EquipmentDataAccess().FindByName(legs.name);
-                    }
+                    character.Equipments.Legs = new EquipmentDataAccess().FindByName(legs.name);
                 }
                 catch
                 {
@@ -204,14 +155,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var feet = JsonConvert.DeserializeObject(data.equipments.feet.ToString().Replace("\r\n", ""));
-                    if (feet.name == null)
-                    {
-                        character.Equipments.Feet = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Feet = new EquipmentDataAccess().FindByName(feet.name);
-                    }
+                    character.Equipments.Feet = new EquipmentDataAccess().FindByName(feet.name);
                 }
                 catch
                 {
@@ -220,14 +164,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var arms = JsonConvert.DeserializeObject(data.equipments.arms.ToString().Replace("\r\n", ""));
-                    if (arms.name == null)
-                    {
-                        character.Equipments.Arms = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Arms = new EquipmentDataAccess().FindByName(arms.name);
-                    }
+                    character.Equipments.Arms = new EquipmentDataAccess().FindByName(arms.name);
                 }
                 catch
                 {
@@ -236,14 +173,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
-                    if (hands.name == null)
-                    {
-                        character.Equipments.Hands = new Equipment();
-                    }
-                    else
-                    {
-                        character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
-                    }
+                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
                 }
                 catch
                 {
@@ -267,7 +197,7 @@ namespace gurps_manager_api.Controllers
                     advantageDatabase.Level = advantage.level;
                     character.Advantages.Add(advantageDatabase);
                 }
-                foreach (var disadvantage in data.disadvantage)
+                foreach (var disadvantage in data.disadvantages)
                 {
                     Disadvantage disadvantageDatabase = new DisadvantageDataAccess().FindOne<Disadvantage>((int)disadvantage.id);
                     disadvantageDatabase.Level = disadvantage.level;
