@@ -41,7 +41,6 @@ namespace gurps_manager_api.Controllers
             skill.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
             skill.Name = Request.Form["Name"];
             skill.Description = Request.Form["Description"];
-            skill.Cost = int.Parse(Request.Form["Cost"]);
             skill.Attribute = Request.Form.Where(x => x.Value.Contains("true")).First().Key;
             skill.Difficulty = Request.Form.Where(x => x.Value.Contains("true")).Last().Key;
             new SkillDataAccess().InsertOne(skill);

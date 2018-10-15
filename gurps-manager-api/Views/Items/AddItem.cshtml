@@ -1,13 +1,13 @@
 ﻿@model gurps_manager_library.Models.Item
 
-<h2>Advantage</h2>
+<h2>Item</h2>
 
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Add a new Advantage to the database</h4>
+        <h4>Add a new Item to the database</h4>
         <hr />
         @Html.ValidationSummary(true)
 

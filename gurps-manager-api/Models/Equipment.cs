@@ -11,6 +11,9 @@ namespace gurps_manager_library.Models
         [BsonElement("Id")]
         public int Id;
 
+        [BsonElement("NT")]
+        public int NT;
+
         [BsonElement("Name")]
         public string Name;
 

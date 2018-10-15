@@ -311,7 +311,7 @@ namespace gurps_manager_api.Controllers
                 }
                 new CharacterDataAccess().InsertOne<Character>(character);
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }

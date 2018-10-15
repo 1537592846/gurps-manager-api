@@ -44,6 +44,7 @@ namespace gurps_manager_api.Controllers
             equipment.Cost = int.Parse(Request.Form["Cost"]);
             equipment.Weight = double.Parse(Request.Form["Weight"]);
             equipment.Formula = Request.Form["Formula"];
+            equipment.NT = int.Parse(Request.Form["NT"]);
             new EquipmentDataAccess().InsertOne(equipment);
             return RedirectToAction("Main", "Admin");
         }

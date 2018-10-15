@@ -37,11 +37,11 @@ namespace gurps_manager_api.Controllers
         [HttpPost]
         public ActionResult AddLanguage(Language language)
         {
-            var list = new ItemDataAccess().FindAll<Item>();
+            var list = new LanguageDataAccess().FindAll<Language>();
             language.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
             language.Name = Request.Form["Name"];
             language.Description = Request.Form["Description"];
-            new ItemDataAccess().InsertOne(language);
+            new LanguageDataAccess().InsertOne(language);
             return RedirectToAction("Main", "Admin");
         }
     }
