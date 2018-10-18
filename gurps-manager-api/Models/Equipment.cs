@@ -28,5 +28,8 @@ namespace gurps_manager_library.Models
 
         [BsonElement("Formula")]
         public string Formula;
+
+        [BsonElement("Type")]
+        public string Type;
     }
 }

@@ -54,7 +54,7 @@ namespace gurps_manager_api
                  .Where(t => t.Namespace == "gurps_manager_library.DataAccess")
                  .ToList();
 
-            foreach (var className in classList.Where(x => x.Name != "DataAccess"))
+            foreach (var className in classList.Where(x => x.Name != "DataAccess"&& x.Name.Contains("DataAccess")))
             {
                 var type = Type.GetType("gurps_manager_library.DataAccess." + className.Name);
                 services.AddTransient(type);
