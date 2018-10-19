@@ -15,6 +15,12 @@ namespace gurps_manager_api.Controllers
             return JsonConvert.SerializeObject(new ItemDataAccess().FindAll<Item>());
         }
 
+        [HttpGet("getType/{type}")]
+        public string Get(string type)
+        {
+            return JsonConvert.SerializeObject(new ItemDataAccess().FindByType(type));
+        }
+
         [HttpGet("get/{id}")]
         public string Get(int id)
         {
