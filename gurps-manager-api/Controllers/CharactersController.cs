@@ -203,29 +203,25 @@ namespace gurps_manager_api.Controllers
                     disadvantageDatabase.Level = disadvantage.level;
                     character.Disadvantages.Add(disadvantageDatabase);
                 }
-                foreach (var item in data.inventory.one_hand_weapons)
+                foreach (var equipment in data.inventory.one_hand_weapons)
                 {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.OneHandWeapons.Add(itemDatabase);
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
                 }
-                foreach (var item in data.inventory.two_hand_weapons)
+                foreach (var equipment in data.inventory.two_hand_weapons)
                 {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.TwoHandWeapons.Add(itemDatabase);
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
                 }
-                foreach (var item in data.inventory.shields)
+                foreach (var equipment in data.inventory.shields)
                 {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.Shields.Add(itemDatabase);
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
                 }
-                foreach (var item in data.inventory.armors)
+                foreach (var equipment in data.inventory.armors)
                 {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.Armors.Add(itemDatabase);
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
                 }
                 foreach (var item in data.inventory.consumables)
                 {
@@ -240,6 +236,153 @@ namespace gurps_manager_api.Controllers
                     character.Inventory.Others.Add(itemDatabase);
                 }
                 new CharacterDataAccess().InsertOne<Character>(character);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        [HttpPost("update")]
+        public bool Update([FromBody]JObject content)
+        {
+            try
+            {
+                dynamic data = JsonConvert.DeserializeObject<dynamic>(content.ToString());
+                int id = (int)data.id;
+                var character = new CharacterDataAccess().FindOne<Character>(id);
+                character.Resources = data.resources;
+                character.Status["MaxLifePoints"] = (int)data.max_life_points;
+                character.Status["CurrentLifePoints"] = (int)data.current_life_points;
+                character.Status["MaxFatiguePoints"] = (int)data.max_fatigue_points;
+                character.Status["CurrentFatiguePoints"] = (int)data.current_fatigue_points;
+                character.Status["MaxCarryWeight"] = (int)data.max_carry_weight;
+                character.Status["CurrentCarryWeight"] = (int)data.current_carry_weight;
+                try
+                {
+                    var left_hand = JsonConvert.DeserializeObject(data.equipments.left_hand.ToString().Replace("\r\n", ""));
+                    character.Equipments.LeftHand = new EquipmentDataAccess().FindByName(left_hand.name);
+                }
+                catch
+                {
+                    character.Equipments.LeftHand = new Equipment();
+                }
+                try
+                {
+                    var right_hand = JsonConvert.DeserializeObject(data.equipments.right_hand.ToString().Replace("\r\n", ""));
+                    character.Equipments.RightHand = new EquipmentDataAccess().FindByName(right_hand.name);
+                }
+                catch
+                {
+                    character.Equipments.RightHand = new Equipment();
+                }
+                try
+                {
+                    var both_hand = JsonConvert.DeserializeObject(data.equipments.both_hand.ToString().Replace("\r\n", ""));
+                    character.Equipments.BothHands = new EquipmentDataAccess().FindByName(both_hand.name);
+                }
+                catch
+                {
+                    character.Equipments.BothHands = new Equipment();
+                }
+                try
+                {
+                    var shield = JsonConvert.DeserializeObject(data.equipments.shield.ToString().Replace("\r\n", ""));
+                    character.Equipments.Shield = new EquipmentDataAccess().FindByName(shield.name);
+                }
+                catch
+                {
+                    character.Equipments.Shield = new Equipment();
+                }
+                try
+                {
+                    var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
+                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                }
+                catch
+                {
+                    character.Equipments.Hands = new Equipment();
+                }
+                try
+                {
+                    var torax = JsonConvert.DeserializeObject(data.equipments.torax.ToString().Replace("\r\n", ""));
+                    character.Equipments.Torax = new EquipmentDataAccess().FindByName(torax.name);
+                }
+                catch
+                {
+                    character.Equipments.Torax = new Equipment();
+                }
+                try
+                {
+                    var legs = JsonConvert.DeserializeObject(data.equipments.legs.ToString().Replace("\r\n", ""));
+                    character.Equipments.Legs = new EquipmentDataAccess().FindByName(legs.name);
+                }
+                catch
+                {
+                    character.Equipments.Legs = new Equipment();
+                }
+                try
+                {
+                    var feet = JsonConvert.DeserializeObject(data.equipments.feet.ToString().Replace("\r\n", ""));
+                    character.Equipments.Feet = new EquipmentDataAccess().FindByName(feet.name);
+                }
+                catch
+                {
+                    character.Equipments.Feet = new Equipment();
+                }
+                try
+                {
+                    var arms = JsonConvert.DeserializeObject(data.equipments.arms.ToString().Replace("\r\n", ""));
+                    character.Equipments.Arms = new EquipmentDataAccess().FindByName(arms.name);
+                }
+                catch
+                {
+                    character.Equipments.Arms = new Equipment();
+                }
+                try
+                {
+                    var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
+                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                }
+                catch
+                {
+                    character.Equipments.Hands = new Equipment();
+                }
+                character.Inventory = new Inventory();
+                foreach (var equipment in data.inventory.one_hand_weapons)
+                {
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
+                }
+                foreach (var equipment in data.inventory.two_hand_weapons)
+                {
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.TwoHandWeapons.Add(equipmentDatabase);
+                }
+                foreach (var equipment in data.inventory.shields)
+                {
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.Shields.Add(equipmentDatabase);
+                }
+                foreach (var equipment in data.inventory.armors)
+                {
+                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    character.Inventory.Armors.Add(equipmentDatabase);
+                }
+                foreach (var item in data.inventory.consumables)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Consumables.Add(itemDatabase);
+                }
+                foreach (var item in data.inventory.others)
+                {
+                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Quantity = item.quantity;
+                    character.Inventory.Others.Add(itemDatabase);
+                }
+                new CharacterDataAccess().Update<Character>(character.Id, character);
             }
             catch
             {

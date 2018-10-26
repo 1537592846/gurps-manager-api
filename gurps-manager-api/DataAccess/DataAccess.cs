@@ -37,6 +37,12 @@ namespace gurps_manager_library.DataAccess
             }
         }
 
+        public void Update<T>(int id,T obj)
+        {
+            _db.GetCollection(collectionName).Remove(Query.EQ(idCampName,id));
+            _db.GetCollection(collectionName).Insert(obj.ToBsonDocument());
+        }
+
         public T FindOne<T>(int id)
         {
             return _db.GetCollection(collectionName).FindOneAs<T>(Query.EQ(idCampName, id));

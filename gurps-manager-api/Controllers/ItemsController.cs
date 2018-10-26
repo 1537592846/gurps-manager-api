@@ -3,6 +3,7 @@ using gurps_manager_library.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
 
 namespace gurps_manager_api.Controllers
@@ -66,15 +67,15 @@ namespace gurps_manager_api.Controllers
                 {
                     Item item = new Item()
                     {
-                        Id= NextId(data.type),
-                        Cost=data.cost,
-                        Description=data.description,
-                        Formula=data.formula,
-                        Name=data.name,
-                        NT=data.nt,
-                        Quantity=data.quantity,
-                        Type=data.type,
-                        Weight=data.weight
+                        Id = NextId(data.type.ToString()),
+                        Cost = data.cost,
+                        Description = data.description,
+                        Formula = data.formula,
+                        Name = data.name,
+                        NT = data.nt,
+                        Quantity = data.quantity,
+                        Type = data.type,
+                        Weight = data.weight
                     };
                     new ItemDataAccess().InsertOne(item);
                 }
@@ -82,7 +83,7 @@ namespace gurps_manager_api.Controllers
                 {
                     Equipment equipment = new Equipment()
                     {
-                        Id = NextId(data.type),
+                        Id = NextId(data.type.ToString()),
                         Cost = data.cost,
                         Description = data.description,
                         Formula = data.formula,
@@ -94,7 +95,7 @@ namespace gurps_manager_api.Controllers
                     new EquipmentDataAccess().InsertOne(equipment);
                 }
             }
-            catch
+            catch (Exception e)
             {
                 return false;
             }
@@ -110,7 +111,7 @@ namespace gurps_manager_api.Controllers
                 var items = new ItemDataAccess().FindAll<Item>();
                 if (items.Count != 0)
                 {
-                    id = items.OrderBy(x => x.Id).First().Id + 1;
+                    id = items.OrderBy(x => x.Id).Last().Id + 1;
                 }
             }
             else
@@ -118,7 +119,7 @@ namespace gurps_manager_api.Controllers
                 var equipments = new EquipmentDataAccess().FindAll<Equipment>();
                 if (equipments.Count != 0)
                 {
-                    id = equipments.OrderBy(x => x.Id).First().Id + 1;
+                    id = equipments.OrderBy(x => x.Id).Last().Id + 1;
                 }
             }
             return id;
