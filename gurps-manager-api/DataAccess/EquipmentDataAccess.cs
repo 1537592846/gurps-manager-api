@@ -14,5 +14,11 @@ namespace gurps_manager_library.DataAccess
         {
             return base.FindAll<Equipment>().Where(x => x.Type == type).ToList();
         }
+
+        public Equipment Find(dynamic equipment)
+        {
+            int id = (int)equipment.id;
+            return base.FindOne<Equipment>(id);
+        }
     }
 }

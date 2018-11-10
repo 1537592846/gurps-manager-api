@@ -12,13 +12,25 @@ namespace gurps_manager_api.Controllers
         [HttpGet("get")]
         public string Get()
         {
+            try { 
             return JsonConvert.SerializeObject(new EquipmentDataAccess().FindAll<Equipment>());
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("getType/{type}")]
         public string Get(string type)
         {
+            try { 
             return JsonConvert.SerializeObject(new EquipmentDataAccess().FindByType(type));
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("get/{id}")]

@@ -16,13 +16,25 @@ namespace gurps_manager_api.Controllers
         [HttpGet("get")]
         public string Get()
         {
+            try { 
             return JsonConvert.SerializeObject(new CharacterDataAccess().FindAll<Character>());
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("get/{id}")]
         public string Get(int id)
         {
+            try { 
             return JsonConvert.SerializeObject(new CharacterDataAccess().FindOne<Character>(id));
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("list")]
@@ -262,7 +274,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var left_hand = JsonConvert.DeserializeObject(data.equipments.left_hand.ToString().Replace("\r\n", ""));
-                    character.Equipments.LeftHand = new EquipmentDataAccess().FindByName(left_hand.name);
+                    character.Equipments.LeftHand = new EquipmentDataAccess().Find(left_hand);
                 }
                 catch
                 {
@@ -271,7 +283,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var right_hand = JsonConvert.DeserializeObject(data.equipments.right_hand.ToString().Replace("\r\n", ""));
-                    character.Equipments.RightHand = new EquipmentDataAccess().FindByName(right_hand.name);
+                    character.Equipments.RightHand = new EquipmentDataAccess().Find(right_hand);
                 }
                 catch
                 {
@@ -280,7 +292,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var both_hand = JsonConvert.DeserializeObject(data.equipments.both_hand.ToString().Replace("\r\n", ""));
-                    character.Equipments.BothHands = new EquipmentDataAccess().FindByName(both_hand.name);
+                    character.Equipments.BothHands = new EquipmentDataAccess().Find(both_hand);
                 }
                 catch
                 {
@@ -289,7 +301,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var shield = JsonConvert.DeserializeObject(data.equipments.shield.ToString().Replace("\r\n", ""));
-                    character.Equipments.Shield = new EquipmentDataAccess().FindByName(shield.name);
+                    character.Equipments.Shield = new EquipmentDataAccess().Find(shield);
                 }
                 catch
                 {
@@ -298,7 +310,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
-                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                    character.Equipments.Hands = new EquipmentDataAccess().Find(hands);
                 }
                 catch
                 {
@@ -307,7 +319,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var torax = JsonConvert.DeserializeObject(data.equipments.torax.ToString().Replace("\r\n", ""));
-                    character.Equipments.Torax = new EquipmentDataAccess().FindByName(torax.name);
+                    character.Equipments.Torax = new EquipmentDataAccess().Find(torax);
                 }
                 catch
                 {
@@ -316,7 +328,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var legs = JsonConvert.DeserializeObject(data.equipments.legs.ToString().Replace("\r\n", ""));
-                    character.Equipments.Legs = new EquipmentDataAccess().FindByName(legs.name);
+                    character.Equipments.Legs = new EquipmentDataAccess().Find(legs);
                 }
                 catch
                 {
@@ -325,7 +337,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var feet = JsonConvert.DeserializeObject(data.equipments.feet.ToString().Replace("\r\n", ""));
-                    character.Equipments.Feet = new EquipmentDataAccess().FindByName(feet.name);
+                    character.Equipments.Feet = new EquipmentDataAccess().Find(feet);
                 }
                 catch
                 {
@@ -334,7 +346,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var arms = JsonConvert.DeserializeObject(data.equipments.arms.ToString().Replace("\r\n", ""));
-                    character.Equipments.Arms = new EquipmentDataAccess().FindByName(arms.name);
+                    character.Equipments.Arms = new EquipmentDataAccess().Find(arms);
                 }
                 catch
                 {
@@ -343,7 +355,7 @@ namespace gurps_manager_api.Controllers
                 try
                 {
                     var hands = JsonConvert.DeserializeObject(data.equipments.hands.ToString().Replace("\r\n", ""));
-                    character.Equipments.Hands = new EquipmentDataAccess().FindByName(hands.name);
+                    character.Equipments.Hands = new EquipmentDataAccess().Find(hands);
                 }
                 catch
                 {

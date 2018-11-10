@@ -12,13 +12,25 @@ namespace gurps_manager_api.Controllers
         [HttpGet("get")]
         public string Get()
         {
+            try { 
             return JsonConvert.SerializeObject(new SkillDataAccess().FindAll<Skill>());
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("get/{id}")]
         public string Get(int id)
         {
+            try { 
             return JsonConvert.SerializeObject(new SkillDataAccess().FindOne<Skill>(id));
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("delete")]

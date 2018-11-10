@@ -12,13 +12,25 @@ namespace gurps_manager_api.Controllers
         [HttpGet("get")]
         public string Get()
         {
+            try { 
             return JsonConvert.SerializeObject(new DisadvantageDataAccess().FindAll<Disadvantage>());
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("get/{id}")]
         public string Get(int id)
         {
+            try { 
             return JsonConvert.SerializeObject(new DisadvantageDataAccess().FindOne<Disadvantage>(id));
+            }
+            catch
+            {
+                return "{}";
+            }
         }
 
         [HttpGet("delete")]
