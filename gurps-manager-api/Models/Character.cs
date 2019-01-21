@@ -56,9 +56,6 @@ namespace gurps_manager_library.Models
         [BsonElement("Inventory")]
         public Inventory Inventory;
 
-        [BsonElement("Equipments")]
-        public Equipments Equipments;
-
         public Character()
         {
             Status = new Dictionary<string, int>();
@@ -67,7 +64,6 @@ namespace gurps_manager_library.Models
             Advantages = new List<Advantage>();
             Disadvantages = new List<Disadvantage>();
             Inventory = new Inventory();
-            Equipments = new Equipments();
         }
     }
 }

@@ -34,5 +34,8 @@ namespace gurps_manager_library.Models
 
         [BsonElement("Bought")]
         public bool Bought;
+
+        [BsonElement("Equipped")]
+        public bool Equipped;
     }
 }

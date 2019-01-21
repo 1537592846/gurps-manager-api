@@ -107,7 +107,7 @@ namespace gurps_manager_api.Controllers
                     new EquipmentDataAccess().InsertOne(equipment);
                 }
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
