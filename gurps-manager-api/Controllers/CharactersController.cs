@@ -60,7 +60,7 @@ namespace gurps_manager_api.Controllers
             int id = 1;
             if (characters.Count != 0)
             {
-                id = characters.OrderBy(x => x.Id).First().Id + 1;
+                id = characters.OrderBy(x => x.Id).Last().Id + 1;
             }
             return id.ToJson();
         }
@@ -126,38 +126,6 @@ namespace gurps_manager_api.Controllers
                     disadvantageDatabase.Level = disadvantage.level;
                     character.Disadvantages.Add(disadvantageDatabase);
                 }
-                foreach (var equipment in data.inventory.one_hand_weapons)
-                {
-                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
-                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
-                }
-                foreach (var equipment in data.inventory.two_hand_weapons)
-                {
-                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
-                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
-                }
-                foreach (var equipment in data.inventory.shields)
-                {
-                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
-                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
-                }
-                foreach (var equipment in data.inventory.armors)
-                {
-                    Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
-                    character.Inventory.OneHandWeapons.Add(equipmentDatabase);
-                }
-                foreach (var item in data.inventory.consumables)
-                {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.Consumables.Add(itemDatabase);
-                }
-                foreach (var item in data.inventory.others)
-                {
-                    Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
-                    itemDatabase.Quantity = item.quantity;
-                    character.Inventory.Others.Add(itemDatabase);
-                }
                 new CharacterDataAccess().InsertOne<Character>(character);
             }
             catch
@@ -197,22 +165,28 @@ namespace gurps_manager_api.Controllers
                 foreach (var equipment in data.inventory.shields)
                 {
                     Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    equipmentDatabase.Equipped = equipment.equipped;
+                    equipmentDatabase.Bought = (bool)equipment.bought;
                     character.Inventory.Shields.Add(equipmentDatabase);
                 }
                 foreach (var equipment in data.inventory.armors)
                 {
                     Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    equipmentDatabase.Equipped = equipment.equipped;
+                    equipmentDatabase.Bought = (bool)equipment.bought;
                     character.Inventory.Armors.Add(equipmentDatabase);
                 }
                 foreach (var item in data.inventory.consumables)
                 {
                     Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Bought = (bool)item.bought;
                     itemDatabase.Quantity = item.quantity;
                     character.Inventory.Consumables.Add(itemDatabase);
                 }
                 foreach (var item in data.inventory.others)
                 {
                     Item itemDatabase = new ItemDataAccess().FindOne<Item>((int)item.id);
+                    itemDatabase.Bought = (bool)item.bought;
                     itemDatabase.Quantity = item.quantity;
                     character.Inventory.Others.Add(itemDatabase);
                 }

@@ -49,7 +49,7 @@ namespace gurps_manager_library.Models
 
         [BsonElement("Disadvantages")]
         public List<Disadvantage> Disadvantages;
-
+        
         [BsonElement("Advantages")]
         public List<Advantage> Advantages;
 

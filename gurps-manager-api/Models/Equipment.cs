@@ -6,6 +6,12 @@ namespace gurps_manager_library.Models
 {
     public class Equipment
     {
+        public Equipment()
+        {
+            Bought = false;
+            Equipped = "";
+        }
+
         public ObjectId DBId;
 
         [BsonElement("Id")]
@@ -36,6 +42,6 @@ namespace gurps_manager_library.Models
         public bool Bought;
 
         [BsonElement("Equipped")]
-        public bool Equipped;
+        public string Equipped;
     }
 }
