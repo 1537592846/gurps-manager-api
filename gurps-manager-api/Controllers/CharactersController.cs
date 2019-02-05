@@ -155,11 +155,15 @@ namespace gurps_manager_api.Controllers
                 foreach (var equipment in data.inventory.one_hand_weapons)
                 {
                     Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    equipmentDatabase.Equipped = equipment.equipped;
+                    equipmentDatabase.Bought = (bool)equipment.bought;
                     character.Inventory.OneHandWeapons.Add(equipmentDatabase);
                 }
                 foreach (var equipment in data.inventory.two_hand_weapons)
                 {
                     Equipment equipmentDatabase = new EquipmentDataAccess().FindOne<Equipment>((int)equipment.id);
+                    equipmentDatabase.Equipped = equipment.equipped;
+                    equipmentDatabase.Bought = (bool)equipment.bought;
                     character.Inventory.TwoHandWeapons.Add(equipmentDatabase);
                 }
                 foreach (var equipment in data.inventory.shields)
