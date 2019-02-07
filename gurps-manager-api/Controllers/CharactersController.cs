@@ -87,7 +87,7 @@ namespace gurps_manager_api.Controllers
                 character.CurrentPoints = data.current_points;
                 character.Resources = data.resources;
                 character.Description = data.description == "" ? "" : data.description;
-                character.Status.Add("Strenght", (int)data.strenght);
+                character.Status.Add("Strength", (int)data.strength);
                 character.Status.Add("Dexterity", (int)data.dexterity);
                 character.Status.Add("Intelligence", (int)data.intelligence);
                 character.Status.Add("Health", (int)data.health);

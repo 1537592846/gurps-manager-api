@@ -13,7 +13,7 @@
         public object current_points { get; set; }
         public object resource { get; set; }
         public object description { get; set; }
-        public object strenght { get; set; }
+        public object strength { get; set; }
         public object dexterity { get; set; }
         public object intelligence { get; set; }
         public object health { get; set; }
