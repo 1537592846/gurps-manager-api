@@ -1,60 +1,68 @@
 ﻿@model gurps_manager_library.Models.Disadvantage
 
-<h2>Disadvantages</h2>
+<h2>Disadvantage</h2>
 
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Add a new Disadvantages to the database</h4>
+        <h4>Add a new Disadvantage to the database</h4>
         <hr />
         @Html.ValidationSummary(true)
 
-        <div>
-            <div>
-                @Html.LabelFor(model => model.Name)
-                @Html.TextBoxFor(model => model.Name)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Description)
-                @Html.TextBoxFor(model => model.Description)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Cost)
-                @Html.TextBoxFor(model => model.Cost)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.LevelCap)
-                @Html.TextBoxFor(model => model.LevelCap)
-            </div>
-
-            <div>
-                @Html.CheckBox("Mental")
-                @Html.Label("Mental")
-                @Html.CheckBox("Physical")
-                @Html.Label("Physical")
-                @Html.CheckBox("Social")
-                @Html.Label("Social")
-                @Html.CheckBox("Exotic")
-                @Html.Label("Exotic")
-                @Html.CheckBox("Supernatural")
-                @Html.Label("Supernatural")
-                @Html.CheckBox("Mundane")
-                @Html.Label("Mundane")
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Formula)
-                @Html.TextBoxFor(model => model.Formula)
-            </div>
-
-            <div>
-                <input type="submit" value="Add" class="btn btn-success" />
-            </div>
-        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Name)</td>
+                    <td>@Html.TextBoxFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Description)</td>
+                    <td colspan="2">@Html.TextAreaFor(model => model.Description, 5, 80, null)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Cost)</td>
+                    <td>@Html.TextBoxFor(model => model.Cost)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.LevelCap)</td>
+                    <td>@Html.TextBoxFor(model => model.LevelCap)</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.CheckBox("Mental")
+                        @Html.Label("Mental")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Physical")
+                        @Html.Label("Physical")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Social")
+                        @Html.Label("Social")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.CheckBox("Exotic")
+                        @Html.Label("Exotic")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Supernatural")
+                        @Html.Label("Supernatural")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Mundane")
+                        @Html.Label("Mundane")
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Formula)</td>
+                    <td>@Html.TextBoxFor(model => model.Formula)</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Add" class="btn btn-success" />
     </div>
 }
