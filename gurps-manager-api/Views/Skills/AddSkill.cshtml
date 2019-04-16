@@ -1,52 +1,69 @@
 ﻿@model gurps_manager_library.Models.Skill
 
-<h2>Advantage</h2>
+<h2>Skill</h2>
 
 @using (Html.BeginForm(FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Add a new Advantage to the database</h4>
+        <h4>Add a new Skill to the database</h4>
         <hr />
         @Html.ValidationSummary(true)
 
-        <div>
-            <div>
-                @Html.LabelFor(model => model.Name)
-                @Html.TextBoxFor(model => model.Name)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Description)
-                @Html.TextBoxFor(model => model.Description)
-            </div>
-            
-            <div>
-                @Html.CheckBox("Strength")
-                @Html.Label("Strength")
-                @Html.CheckBox("Dexterity")
-                @Html.Label("Dexterity")
-                @Html.CheckBox("Intelligence")
-                @Html.Label("Intelligence")
-                @Html.CheckBox("Health")
-                @Html.Label("Health")
-            </div>
-
-            <div>
-                @Html.CheckBox("Easy")
-                @Html.Label("Easy")
-                @Html.CheckBox("Moderate")
-                @Html.Label("Moderate")
-                @Html.CheckBox("Hard")
-                @Html.Label("Hard")
-                @Html.CheckBox("VeryHard")
-                @Html.Label("Very Hard")
-            </div>
-
-            <div>
-                <input type="submit" value="Add" class="btn btn-success" />
-            </div>
-        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Name)</td>
+                    <td>@Html.TextBoxFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Description)</td>
+                    <td>@Html.TextAreaFor(model => model.Description, 5, 80, null)</td>
+                </tr>
+                <tr>
+                    <td style="overflow:visible">
+                        @Html.CheckBox("Strength")
+                        @Html.Label("Strength")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Dexterity")
+                        @Html.Label("Dexterity")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.CheckBox("Intelligence")
+                        @Html.Label("Intelligence")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Health")
+                        @Html.Label("Health")
+                    </td>
+                </tr>
+                <tr><td><br /></td></tr>
+                <tr>
+                    <td>
+                        @Html.CheckBox("Easy")
+                        @Html.Label("Easy")
+                    </td>
+                    <td>
+                        @Html.CheckBox("Moderate")
+                        @Html.Label("Moderate")
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.CheckBox("Hard")
+                        @Html.Label("Hard")
+                    </td>
+                    <td>
+                        @Html.CheckBox("VeryHard")
+                        @Html.Label("VeryHard")
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Add" class="btn btn-success" />
     </div>
 }

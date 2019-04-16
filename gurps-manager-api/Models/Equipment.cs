@@ -27,13 +27,16 @@ namespace gurps_manager_library.Models
         public string Description;
 
         [BsonElement("Cost")]
-        public int Cost;
+        public double Cost;
 
         [BsonElement("Weight")]
         public double Weight;
 
         [BsonElement("Formula")]
         public string Formula;
+
+        [BsonElement("SkillUsed")]
+        public string SkillUsed;
 
         [BsonElement("Type")]
         public string Type;

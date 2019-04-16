@@ -61,7 +61,7 @@ namespace gurps_manager_api.Controllers
             item.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
             item.Name = Request.Form["Name"];
             item.Description = Request.Form["Description"];
-            item.Cost = int.Parse(Request.Form["Cost"]);
+            item.Cost = double.Parse(Request.Form["Cost"]);
             item.NT = int.Parse(Request.Form["NT"]);
             item.Weight = double.Parse(Request.Form["Weight"]);
             item.Formula = Request.Form["Formula"];
@@ -101,6 +101,7 @@ namespace gurps_manager_api.Controllers
                         Formula = data.formula,
                         Name = data.name,
                         NT = data.nt,
+                        SkillUsed= data.skillUsed,
                         Type = data.type,
                         Weight = data.weight
                     };

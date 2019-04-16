@@ -11,40 +11,42 @@
         <hr />
         @Html.ValidationSummary(true)
 
-        <div>
-            <div>
-                @Html.LabelFor(model => model.Name)
-                @Html.TextBoxFor(model => model.Name)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.NT)
-                @Html.TextBoxFor(model => model.NT)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Description)
-                @Html.TextBoxFor(model => model.Description)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Cost)
-                @Html.TextBoxFor(model => model.Cost)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Weight)
-                @Html.TextBoxFor(model => model.Weight)
-            </div>
-
-            <div>
-                @Html.LabelFor(model => model.Formula)
-                @Html.TextBoxFor(model => model.Formula)
-            </div>
-
-            <div>
-                <input type="submit" value="Add" class="btn btn-success" />
-            </div>
-        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Name)</td>
+                    <td>@Html.TextBoxFor(model => model.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Description)</td>
+                    <td colspan="2">@Html.TextAreaFor(model => model.Description, 5, 80, null)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.SkillUsed)</td>
+                    <td>@Html.TextBoxFor(model => model.SkillUsed)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Type)</td>
+                    <td>@Html.TextBoxFor(model => model.Type)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.NT)</td>
+                    <td>@Html.TextBoxFor(model => model.NT)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Cost)</td>
+                    <td>@Html.TextBoxFor(model => model.Cost)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Weight)</td>
+                    <td>@Html.TextBoxFor(model => model.Weight)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(model => model.Formula)</td>
+                    <td colspan="2">@Html.TextAreaFor(model => model.Formula, 5, 80, null)</td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Add" class="btn btn-success" />
     </div>
 }

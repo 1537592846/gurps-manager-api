@@ -59,9 +59,11 @@ namespace gurps_manager_api.Controllers
             equipment.Id = list.Count == 0 ? 1 : list.Last().Id + 1;
             equipment.Name = Request.Form["Name"];
             equipment.Description = Request.Form["Description"];
-            equipment.Cost = int.Parse(Request.Form["Cost"]);
+            equipment.Cost = double.Parse(Request.Form["Cost"]);
             equipment.Weight = double.Parse(Request.Form["Weight"]);
             equipment.Formula = Request.Form["Formula"];
+            equipment.SkillUsed = Request.Form["SkillUsed"];
+            equipment.Type = Request.Form["Type"];
             equipment.NT = int.Parse(Request.Form["NT"]);
             new EquipmentDataAccess().InsertOne(equipment);
             return RedirectToAction("Main", "Admin");
