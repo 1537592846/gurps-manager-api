@@ -1,0 +1,11 @@
+C:\Projetos\gurps-manager-api\gurps-manager-api
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=gurps-manager-api
+--content-root=C:\Projetos\gurps-manager-api\gurps-manager-api
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Admin\Main.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Advantages\AddAdvantage.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Disadvantages\AddDisadvantage.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Equipments\AddEquipment.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Items\AddItem.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Languages\AddLanguage.cshtml
+--file=C:\Projetos\gurps-manager-api\gurps-manager-api\Views\Skills\AddSkill.cshtml

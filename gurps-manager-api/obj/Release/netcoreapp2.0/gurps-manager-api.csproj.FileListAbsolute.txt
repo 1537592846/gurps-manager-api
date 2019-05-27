@@ -1,0 +1,11 @@
+C:\Projetos\gurps-manager-api\gurps-manager-api\bin\Release\netcoreapp2.0\gurps-manager-api.deps.json
+C:\Projetos\gurps-manager-api\gurps-manager-api\bin\Release\netcoreapp2.0\gurps-manager-api.runtimeconfig.json
+C:\Projetos\gurps-manager-api\gurps-manager-api\bin\Release\netcoreapp2.0\gurps-manager-api.runtimeconfig.dev.json
+C:\Projetos\gurps-manager-api\gurps-manager-api\bin\Release\netcoreapp2.0\gurps-manager-api.dll
+C:\Projetos\gurps-manager-api\gurps-manager-api\bin\Release\netcoreapp2.0\gurps-manager-api.pdb
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.csprojAssemblyReference.cache
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.csproj.CoreCompileInputs.cache
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.AssemblyInfoInputs.cache
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.AssemblyInfo.cs
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.dll
+C:\Projetos\gurps-manager-api\gurps-manager-api\obj\Release\netcoreapp2.0\gurps-manager-api.pdb
