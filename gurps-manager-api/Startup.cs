@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using gurps_manager_library.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace gurps_manager_api
 {
@@ -26,13 +23,8 @@ namespace gurps_manager_api
         public void ConfigureServices(IServiceCollection services)
         {
             AddTransients(services);
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowSpecificOrigin",
-                    builder => { builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader(); });
-            });
             services.Configure<IISOptions>(options =>
-                options.AutomaticAuthentication = true);
+                    options.AutomaticAuthentication = true);
             services.AddMvc();
         }
 
@@ -43,10 +35,7 @@ namespace gurps_manager_api
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            // Shows UseCors with named policy.
-            app.UseCors("AllowSpecificOrigin");
-
+            app.UseCors(builder => builder.WithOrigins("http://localhost:8100").AllowAnyMethod().AllowAnyOrigin().AllowAnyHeader());
             app.UseMvc();
         }
 
